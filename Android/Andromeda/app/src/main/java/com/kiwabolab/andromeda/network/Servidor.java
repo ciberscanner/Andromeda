@@ -6,6 +6,6 @@ public class Servidor {
     //----------------------------------------------------------------------------------------------
     //Variables
     /**Produccion*/
-    public static String DatosAbiertos ="http://www3.interrapidisimo.com/RapsApi/api/";
+    public static String ServidorDatosAbiertos ="https://www.datos.gov.co/resource/";
     public static String ServidorAndromeda ="https://pruebaskiwano.000webhostapp.com/andromeda/";
 }

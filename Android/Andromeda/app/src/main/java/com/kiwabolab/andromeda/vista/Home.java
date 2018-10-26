@@ -1,9 +1,11 @@
 package com.kiwabolab.andromeda.vista;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,18 +15,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.kiwabolab.andromeda.R;
 import com.kiwabolab.andromeda.modelo.Procuraduria;
+import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
 import com.kiwabolab.andromeda.presentacion.home.ContratoHome;
 import com.kiwabolab.andromeda.presentacion.home.PresentadorHome;
 import com.valdesekamdem.library.mdtoast.MDToast;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +44,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @BindView(R.id.spinner)Spinner spinner;
     @BindView(R.id.progressBar)ProgressBar progressBar;
 
+
     private PresentadorHome presentadorHome;
     private String tipodocumento ="0";
 
@@ -43,6 +52,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private Procuraduria procuraduria;
     private boolean okRues = false;
     private boolean okProcuraduria = false;
+    private boolean okProveedoresSecop = false;
     //----------------------------------------------------------------------------------------------
     //Constructor
     @Override
@@ -65,6 +75,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -114,13 +125,17 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         else {
             obtenerRues(numero.getText().toString());
             obtenerProcuraduria(numero.getText().toString());
+            obtenerProveedoresSecop(numero.getText().toString());
+            new AsyncTaskRunner().execute("1");
         }
     }
-
     //----------------------------------------------------------------------------------------------
     //
     private void gotoDetalle(){
-
+        Intent intent = new Intent(this, Analisis.class);
+        intent.putExtra("rues",rues);
+        intent.putExtra("procuraduria", procuraduria);
+        startActivity(intent);
     }
     //----------------------------------------------------------------------------------------------
     //
@@ -133,6 +148,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void obtenerRuesOk(Rues rues) {
         this.rues = rues;
+        this.okRues = true;
         MDToast mdToast = MDToast.makeText(getApplicationContext(), "RUES", MDToast.LENGTH_LONG, MDToast.TYPE_SUCCESS);
         mdToast.show();
     }
@@ -140,6 +156,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     //
     @Override
     public void obtenerRuesError() {
+        this.okRues = true;
         MDToast mdToast = MDToast.makeText(getApplicationContext(), "Error", MDToast.LENGTH_LONG, MDToast.TYPE_ERROR);
         mdToast.show();
     }
@@ -147,7 +164,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     //
     @Override
     public void obtenerProcuraduria(String nit) {
-        closeLoading();
         presentadorHome.obtenerProcuraduria(nit);
     }
     //----------------------------------------------------------------------------------------------
@@ -155,16 +171,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void obtenerProcuraduriaOk(Procuraduria procuraduria) {
         this.procuraduria=procuraduria;
+        this.okProcuraduria = true;
         MDToast mdToast = MDToast.makeText(getApplicationContext(), "PROCURADURÍA", MDToast.LENGTH_LONG, MDToast.TYPE_SUCCESS);
         mdToast.show();
     }
-
-    //----------------------------------------------------------------------------------------------
-    //
     //----------------------------------------------------------------------------------------------
     //
     @Override
     public void obtenerProcuraduriaError() {
+        this.okProcuraduria = true;
 
     }
     //----------------------------------------------------------------------------------------------
@@ -233,13 +248,35 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         return true;
     }
     //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProveedoresSecop(String nit) {
+        presentadorHome.obtenerProveedoresSecop(nit);
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops) {
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "PROVEEDORSECOP", MDToast.LENGTH_LONG, MDToast.TYPE_SUCCESS);
+        mdToast.show();
+        okProveedoresSecop=true;
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProveedoresSecopError() {
+        okProveedoresSecop=true;
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "Atención! No se encontro registros", MDToast.LENGTH_LONG, MDToast.TYPE_INFO);
+        mdToast.show();
+    }
+    //----------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------
     //
     private class AsyncTaskRunner extends AsyncTask<String, String, String> {
         @Override
         protected String doInBackground(String... params) {
             int time = 1000;
-            while (!okRues || !okProcuraduria){
+            while (!okRues || !okProcuraduria|| !okProveedoresSecop){
                 try {
                     Thread.sleep(time);
                 } catch (InterruptedException e) {
@@ -252,6 +289,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         @Override
         protected void onPostExecute(String result) {
+            closeLoading();
+            okRues=false;
+            okProcuraduria=false;
+            okProveedoresSecop=false;
             gotoDetalle();
         }
     }

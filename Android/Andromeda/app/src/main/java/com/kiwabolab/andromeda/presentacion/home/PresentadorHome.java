@@ -1,7 +1,10 @@
 package com.kiwabolab.andromeda.presentacion.home;
 
 import com.kiwabolab.andromeda.modelo.Procuraduria;
+import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
+
+import java.util.List;
 
 public class PresentadorHome implements ContratoHome.HomePresentador{
     //----------------------------------------------------------------------------------------------
@@ -62,5 +65,23 @@ public class PresentadorHome implements ContratoHome.HomePresentador{
     @Override
     public void closeLoading() {
         vista.closeLoading();
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProveedoresSecop(String nit) {
+        interactor.obtenerProveedoresSecop(nit);
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops) {
+        vista.obtenerProveedoresSecopOk(proveedorSecops);
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProveedoresSecopError() {
+        vista.obtenerProveedoresSecopError();
     }
 }

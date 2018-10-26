@@ -3,15 +3,19 @@ package com.kiwabolab.andromeda.presentacion.home;
 import android.util.Log;
 
 import com.kiwabolab.andromeda.modelo.Procuraduria;
+import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
 import com.kiwabolab.andromeda.network.retrofit.RestApiAdapter;
 import com.kiwabolab.andromeda.network.retrofit.RestClient;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.kiwabolab.andromeda.network.Servidor.ServidorAndromeda;
+import static com.kiwabolab.andromeda.network.Servidor.ServidorDatosAbiertos;
 
 public class InteractorHome implements ContratoHome.HomeInteractor {
     //----------------------------------------------------------------------------------------------
@@ -87,7 +91,25 @@ public class InteractorHome implements ContratoHome.HomeInteractor {
     //----------------------------------------------------------------------------------------------
     //
     @Override
-    public void obtenerProveedoresSecop() {
-
+    public void obtenerProveedoresSecop(String nit) {
+        RestApiAdapter restApiAdapter = new RestApiAdapter();
+        RestClient endpointsApi = restApiAdapter.EstablecerConexion(ServidorDatosAbiertos);
+        Call<List<ProveedorSecop>> contactoResponseCall = endpointsApi.getProveedoresSecop(nit);
+        contactoResponseCall.enqueue(new Callback<List<ProveedorSecop>>() {
+            @Override
+            public void onResponse(Call<List<ProveedorSecop>> call, Response<List<ProveedorSecop>> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        presentador.obtenerProveedoresSecopOk(response.body());
+                    }
+                } else {
+                    presentador.obtenerProveedoresSecopError();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<ProveedorSecop>> call, Throwable t) {
+                presentador.obtenerProveedoresSecopError();
+            }
+        });
     }
 }

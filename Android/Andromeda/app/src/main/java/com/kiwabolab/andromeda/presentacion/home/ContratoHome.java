@@ -1,7 +1,10 @@
 package com.kiwabolab.andromeda.presentacion.home;
 
 import com.kiwabolab.andromeda.modelo.Procuraduria;
+import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
+
+import java.util.List;
 
 public interface ContratoHome {
     //----------------------------------------------------------------------------------------------
@@ -14,6 +17,10 @@ public interface ContratoHome {
         void obtenerProcuraduria(String nit);
         void obtenerProcuraduriaOk(Procuraduria procuraduria);
         void obtenerProcuraduriaError();
+
+        void obtenerProveedoresSecop(String nit);
+        void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops);
+        void obtenerProveedoresSecopError();
 
         void showLoading();
         void closeLoading();
@@ -29,6 +36,10 @@ public interface ContratoHome {
         void obtenerProcuraduriaOk(Procuraduria procuraduria);
         void obtenerProcuraduriaError();
 
+        void obtenerProveedoresSecop(String nit);
+        void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops);
+        void obtenerProveedoresSecopError();
+
 
 
         void showLoading();
@@ -41,6 +52,6 @@ public interface ContratoHome {
         void obtenerProcuraduria(String nit);
         void obtenerContratosSecop();
         void obtenerProcesosSecop();
-        void obtenerProveedoresSecop();
+        void obtenerProveedoresSecop(String nit);
     }
 }
