@@ -12,7 +12,7 @@ public class Tutorial extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        startActivity(new Intent(this, Home.class));
+        startActivity(new Intent(this, Home2.class));
         finish();
     }
 }

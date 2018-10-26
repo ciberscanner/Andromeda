@@ -30,8 +30,8 @@ public interface RestClient {
     Call<Procuraduria> getProcuraduriaCED(@Path("id") String id);
     //----------------------------------------------------------------------------------------------
     //SECOP CONTRATOS /PORTAL DATOS ABIERTOS
-    @GET("ParametrosOperacion/ObtenerResponsableFalla/{id}")
-    Call<List<Contrato>> getSecopContratos(@Path("id") String id);
+    @GET("9f3w-id9a.json")
+    Call<List<Contrato>> getSecopContratos(@Query("docproveedor") String id);
     //----------------------------------------------------------------------------------------------
     //SECOP PROCESOS /Información de los procesos de compra/PORTAL DATOS ABIERTOS
     @GET("ParametrosOperacion/ObtenerResponsableFalla/{id}")

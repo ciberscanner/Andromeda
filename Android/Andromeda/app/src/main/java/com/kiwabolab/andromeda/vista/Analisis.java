@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.kiwabolab.andromeda.R;
 import com.kiwabolab.andromeda.modelo.Procuraduria;
+import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
 import com.valdesekamdem.library.mdtoast.MDToast;
 
@@ -23,6 +24,9 @@ public class Analisis extends Activity {
     @BindView(R.id.txtNitScore)TextView nitscore;
     @BindView(R.id.dotRues)ImageView dotRues;
     @BindView(R.id.dotProcuraduria)ImageView dotProcuraduria;
+    @BindView(R.id.dotSecop)ImageView dotSecop;
+
+
     @BindView(R.id.scorebar)ImageView scorebar;
     @BindView(R.id.dotgreen)TextView greenScore;
     @BindView(R.id.dotorange)TextView orangeScore;
@@ -37,6 +41,7 @@ public class Analisis extends Activity {
 
     private Rues rues;
     private Procuraduria procuraduria;
+    private ProveedorSecop proveedor;
     //----------------------------------------------------------------------------------------------
     //Constructor
     @Override
@@ -47,6 +52,11 @@ public class Analisis extends Activity {
 
         rues = (Rues)getIntent().getSerializableExtra("rues");
         procuraduria = (Procuraduria) getIntent().getSerializableExtra("procuraduria");
+        try{
+            proveedor = (ProveedorSecop) getIntent().getSerializableExtra("proveedorsecop2");
+        }catch (Exception ex){
+            proveedor = null;
+        }
 
         setVista();
     }
@@ -79,6 +89,14 @@ public class Analisis extends Activity {
         else{
             dotProcuraduria.setImageResource(R.mipmap.dot_red);
             red++;
+        }
+
+        if(proveedor== null){
+            dotSecop.setImageResource(R.mipmap.dot_orange);
+            orange++;
+        }else{
+            dotSecop.setImageResource(R.mipmap.dot_green);
+            green++;
         }
 
         greenScore.setText(" "+green);
@@ -141,7 +159,7 @@ public class Analisis extends Activity {
             intent.putExtra("rues",rues);
             startActivity(intent);
         }else {
-            MDToast mdToast = MDToast.makeText(getApplicationContext(), "Error! No existe registro", MDToast.LENGTH_LONG, MDToast.TYPE_ERROR);
+            MDToast mdToast = MDToast.makeText(getApplicationContext(), "Atención! No existe registro", MDToast.LENGTH_LONG, MDToast.TYPE_ERROR);
             mdToast.show();
         }
     }
@@ -168,6 +186,18 @@ public class Analisis extends Activity {
         }else {
             MDToast mdToast = MDToast.makeText(getApplicationContext(), "Atención! No existe registro sin RUES", MDToast.LENGTH_LONG, MDToast.TYPE_WARNING);
             mdToast.show();
+        }
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    public void GotoSecopII(View view){
+        if(proveedor== null){
+            MDToast mdToast = MDToast.makeText(getApplicationContext(), "Atención! No existe registro", MDToast.LENGTH_LONG, MDToast.TYPE_WARNING);
+            mdToast.show();
+        }else{
+            Intent intent = new Intent(this, DetalleSecop.class);
+            intent.putExtra("rues",proveedor);
+            startActivity(intent);
         }
     }
 }

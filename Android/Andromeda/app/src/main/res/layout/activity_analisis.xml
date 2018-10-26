@@ -84,7 +84,9 @@
                 android:layout_height="wrap_content"
                 android:background="@mipmap/title_blue_bar"
                 android:orientation="horizontal"
-                android:paddingTop="5dp">
+                android:paddingTop="5dp"
+                android:clickable="true"
+                android:onClick="GotoSecopII">
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
