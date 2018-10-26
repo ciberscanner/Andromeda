@@ -10,4 +10,9 @@
     <string name="tipodedocumento">Seleccione tipo de documento</string>
     <string name="numerodedocumento">Ingrese Número De Documento</string>
 
+
+    <string name="next">Siguiente</string>
+    <string name="skip">Saltar</string>
+    <string name="start">Empezar</string>
+
 </resources>
