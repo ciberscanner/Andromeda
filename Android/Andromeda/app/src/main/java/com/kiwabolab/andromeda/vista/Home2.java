@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.kiwabolab.andromeda.R;
+import com.kiwabolab.andromeda.modelo.Contrato;
 import com.kiwabolab.andromeda.modelo.Procuraduria;
 import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
@@ -100,7 +101,7 @@ public class Home2 extends Activity implements ContratoHome.HomeVista{
         Intent intent = new Intent(this, Analisis.class);
         intent.putExtra("rues",rues);
         intent.putExtra("procuraduria", procuraduria);
-        if(proveedoresSecop==null){
+        if(proveedoresSecop == null || proveedoresSecop.isEmpty()){
             intent.putExtra("proveedorsecop2","null");
         }else{
             intent.putExtra("proveedorsecop2",proveedoresSecop.get(0));
@@ -151,6 +152,7 @@ public class Home2 extends Activity implements ContratoHome.HomeVista{
     @Override
     public void obtenerProcuraduriaError() {
         this.okProcuraduria = true;
+        this.procuraduria = null;
     }
     //----------------------------------------------------------------------------------------------
     //
@@ -175,6 +177,25 @@ public class Home2 extends Activity implements ContratoHome.HomeVista{
             super.onBackPressed();
         }
     }
+
+    //----------------------------------------------------------------------------------------------
+    //
+
+    @Override
+    public void obtenerContratosSecop(String nit) {
+
+    }
+
+    @Override
+    public void obtenerContratosOk(List<Contrato> proveedorSecops) {
+
+    }
+
+    @Override
+    public void obtenerContratosError() {
+
+    }
+
     //----------------------------------------------------------------------------------------------
     //
     @Override
@@ -184,11 +205,11 @@ public class Home2 extends Activity implements ContratoHome.HomeVista{
     //----------------------------------------------------------------------------------------------
     //
     @Override
-    public void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops) {
+    public void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedoresSecop) {
         MDToast mdToast = MDToast.makeText(getApplicationContext(), "PROVEEDORSECOP", MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
         mdToast.show();
         okProveedoresSecop=true;
-
+        this.proveedoresSecop = proveedoresSecop;
     }
     //----------------------------------------------------------------------------------------------
     //

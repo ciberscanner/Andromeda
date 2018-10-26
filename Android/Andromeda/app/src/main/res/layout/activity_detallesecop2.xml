@@ -58,13 +58,14 @@
                     android:id="@+id/descripcion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="Si"
                     android:layout_weight="1"
                     android:textColor="@color/Gristexto"
                     android:textSize="16sp"
                     android:layout_marginBottom="5dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
+                    android:textAlignment="center"
                     android:background="@drawable/edittext_rounded_corners" />
                 <ImageView
                     android:id="@+id/dotSecop2"

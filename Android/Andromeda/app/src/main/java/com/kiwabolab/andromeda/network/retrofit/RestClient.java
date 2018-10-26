@@ -35,7 +35,7 @@ public interface RestClient {
     //----------------------------------------------------------------------------------------------
     //SECOP PROCESOS /Información de los procesos de compra/PORTAL DATOS ABIERTOS
     @GET("ParametrosOperacion/ObtenerResponsableFalla/{id}")
-    Call<List<Contrato>> getResponsableFalla(@Path("id") String id);
+    Call<List<Contrato>> getSeocpProcesos(@Path("id") String id);
     //----------------------------------------------------------------------------------------------
     //SECOP PROVEEDORES /Información Básica de los proveedores registrados en SECOP II/PORTAL DATOS ABIERTOS
     @GET("cui9-qx99.json")

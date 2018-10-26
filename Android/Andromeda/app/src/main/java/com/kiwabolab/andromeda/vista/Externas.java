@@ -2,6 +2,7 @@ package com.kiwabolab.andromeda.vista;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -37,6 +38,12 @@ public class Externas extends Activity {
         webView.getSettings().setJavaScriptEnabled(true);
         url=url+rues.getRows().get(0).getRazonSocial()+"&oq="+rues.getRows().get(0).getRazonSocial();
         webView.loadUrl(url);
+    }
+
+    //----------------------------------------------------------------------------------------------
+    //
+    public void Exit(View view){
+        finish();
     }
     //----------------------------------------------------------------------------------------------
     //

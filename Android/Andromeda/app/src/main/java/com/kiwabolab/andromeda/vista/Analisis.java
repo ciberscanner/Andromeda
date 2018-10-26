@@ -78,8 +78,11 @@ public class Analisis extends Activity {
             red++;
         }
 
-
-        if(procuraduria.getAntecedente().contains("no presenta antecedentes")){
+        if(procuraduria == null){
+            dotProcuraduria.setImageResource(R.mipmap.dot_orange);
+            orange++;
+        }
+        else if(procuraduria.getAntecedente().contains("no presenta antecedentes")){
             dotProcuraduria.setImageResource(R.mipmap.dot_green);
             green++;
         }else if(procuraduria.getAntecedente().isEmpty()){
@@ -105,7 +108,9 @@ public class Analisis extends Activity {
 
         float aux = green+orange+red;
         double calificacion = (green*5 + orange*2.5)/aux;
-        score.setText(""+calificacion);
+        String text= calificacion+" ";
+        text = text.substring(0,3);
+        score.setText(text);
 
         int margen = (int)(calificacion/0.382);
 
@@ -166,6 +171,11 @@ public class Analisis extends Activity {
     //----------------------------------------------------------------------------------------------
     //
     public void GotoProcuraduria(View view){
+        if(procuraduria== null){
+            MDToast mdToast = MDToast.makeText(getApplicationContext(), "Atención! Esta base de datos no es accesesible en el momento", MDToast.LENGTH_LONG, MDToast.TYPE_WARNING);
+            mdToast.show();
+            return;
+        }
         if(!procuraduria.getNombre().isEmpty()){
             Intent intent = new Intent(this, DetalleProcuraduria.class);
             intent.putExtra("procuraduria",procuraduria);
@@ -196,7 +206,7 @@ public class Analisis extends Activity {
             mdToast.show();
         }else{
             Intent intent = new Intent(this, DetalleSecop.class);
-            intent.putExtra("rues",proveedor);
+            intent.putExtra("proveedorSecop",proveedor);
             startActivity(intent);
         }
     }
