@@ -3,4 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+
+    <color name="colorBlack">#000000</color>
+    <color name="Gristexto">#636363</color>
+    <color name="GrisTextbox">#eaeaea</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="Rojo">#e9320e</color>
+    <color name="Naranja">#ff9c00</color>
+    <color name="Verde">#66d000</color>
+    <color name="Azul">#1482d0</color>
 </resources>

@@ -6,4 +6,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string name="tipodedocumento">Seleccione tipo de documento</string>
+    <string name="numerodedocumento">Ingrese Número De Documento</string>
+
 </resources>
