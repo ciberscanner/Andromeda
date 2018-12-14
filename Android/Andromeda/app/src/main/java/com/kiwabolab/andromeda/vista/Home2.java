@@ -1,5 +1,6 @@
 package com.kiwabolab.andromeda.vista;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -9,24 +10,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.kiwabolab.andromeda.R;
+import com.kiwabolab.andromeda.modelo.Contrato;
 import com.kiwabolab.andromeda.modelo.Procuraduria;
 import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
@@ -39,7 +30,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ContratoHome.HomeVista {
+public class Home2 extends Activity implements ContratoHome.HomeVista{
     //----------------------------------------------------------------------------------------------
     //Variables
     @BindView(R.id.txtnumero)EditText numero;
@@ -51,13 +42,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     private Rues rues;
     private Procuraduria procuraduria;
+    private List<ProveedorSecop> proveedoresSecop;
+
     private boolean okRues = false;
     private boolean okProcuraduria = false;
     private boolean okProveedoresSecop = false;
     //----------------------------------------------------------------------------------------------
     //Constructor
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this ,R.color.colorPrimaryDark));
@@ -127,6 +120,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Intent intent = new Intent(this, Analisis.class);
         intent.putExtra("rues",rues);
         intent.putExtra("procuraduria", procuraduria);
+        if(proveedoresSecop == null || proveedoresSecop.isEmpty()){
+            intent.putExtra("proveedorsecop2","null");
+        }else{
+            intent.putExtra("proveedorsecop2",proveedoresSecop.get(0));
+        }
+
         startActivity(intent);
     }
     //----------------------------------------------------------------------------------------------
@@ -141,7 +140,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public void obtenerRuesOk(Rues rues) {
         this.rues = rues;
         this.okRues = true;
-        MDToast mdToast = MDToast.makeText(getApplicationContext(), "RUES", MDToast.LENGTH_LONG, MDToast.TYPE_SUCCESS);
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "RUES", MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
         mdToast.show();
     }
     //----------------------------------------------------------------------------------------------
@@ -149,7 +148,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void obtenerRuesError() {
         this.okRues = true;
-        MDToast mdToast = MDToast.makeText(getApplicationContext(), "Error", MDToast.LENGTH_LONG, MDToast.TYPE_ERROR);
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "Error RUES", MDToast.LENGTH_LONG, MDToast.TYPE_ERROR);
         mdToast.show();
     }
     //----------------------------------------------------------------------------------------------
@@ -164,7 +163,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public void obtenerProcuraduriaOk(Procuraduria procuraduria) {
         this.procuraduria=procuraduria;
         this.okProcuraduria = true;
-        MDToast mdToast = MDToast.makeText(getApplicationContext(), "PROCURADURÍA", MDToast.LENGTH_LONG, MDToast.TYPE_SUCCESS);
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "PROCURADURÍA", MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
         mdToast.show();
     }
     //----------------------------------------------------------------------------------------------
@@ -172,6 +171,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void obtenerProcuraduriaError() {
         this.okProcuraduria = true;
+        this.procuraduria = null;
     }
     //----------------------------------------------------------------------------------------------
     //
@@ -210,31 +210,25 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         return super.onOptionsItemSelected(item);
     }
+
     //----------------------------------------------------------------------------------------------
     //
-    @SuppressWarnings("StatementWithEmptyBody")
+
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+    public void obtenerContratosSecop(String nit) {
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
+
+    @Override
+    public void obtenerContratosOk(List<Contrato> proveedorSecops) {
+
+    }
+
+    @Override
+    public void obtenerContratosError() {
+
+    }
+
     //----------------------------------------------------------------------------------------------
     //
     @Override
@@ -244,10 +238,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     //----------------------------------------------------------------------------------------------
     //
     @Override
-    public void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops) {
-        MDToast mdToast = MDToast.makeText(getApplicationContext(), "PROVEEDORSECOP", MDToast.LENGTH_LONG, MDToast.TYPE_SUCCESS);
+    public void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedoresSecop) {
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "PROVEEDORSECOP", MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
         mdToast.show();
         okProveedoresSecop=true;
+        this.proveedoresSecop = proveedoresSecop;
     }
     //----------------------------------------------------------------------------------------------
     //

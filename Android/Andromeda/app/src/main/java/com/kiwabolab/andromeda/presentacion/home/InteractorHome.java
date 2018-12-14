@@ -79,7 +79,7 @@ public class InteractorHome implements ContratoHome.HomeInteractor {
     //----------------------------------------------------------------------------------------------
     //
     @Override
-    public void obtenerContratosSecop() {
+    public void obtenerContratosSecop(String nit) {
 
     }
     //----------------------------------------------------------------------------------------------

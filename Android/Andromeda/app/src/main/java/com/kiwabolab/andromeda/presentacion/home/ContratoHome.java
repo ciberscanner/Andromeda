@@ -1,5 +1,6 @@
 package com.kiwabolab.andromeda.presentacion.home;
 
+import com.kiwabolab.andromeda.modelo.Contrato;
 import com.kiwabolab.andromeda.modelo.Procuraduria;
 import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
@@ -22,6 +23,10 @@ public interface ContratoHome {
         void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops);
         void obtenerProveedoresSecopError();
 
+        void obtenerContratosSecop(String nit);
+        void obtenerContratosOk(List<Contrato> proveedorSecops);
+        void obtenerContratosError();
+
         void showLoading();
         void closeLoading();
     }
@@ -40,6 +45,9 @@ public interface ContratoHome {
         void obtenerProveedoresSecopOk(List<ProveedorSecop> proveedorSecops);
         void obtenerProveedoresSecopError();
 
+        void obtenerContratosSecop(String nit);
+        void obtenerContratosOk(List<Contrato> proveedorSecops);
+        void obtenerContratosError();
 
 
         void showLoading();
@@ -50,7 +58,7 @@ public interface ContratoHome {
     interface HomeInteractor{
         void obtenerRues(String nit);
         void obtenerProcuraduria(String nit);
-        void obtenerContratosSecop();
+        void obtenerContratosSecop(String nit);
         void obtenerProcesosSecop();
         void obtenerProveedoresSecop(String nit);
     }
