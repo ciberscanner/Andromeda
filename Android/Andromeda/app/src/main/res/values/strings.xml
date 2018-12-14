@@ -9,5 +9,6 @@
 
     <string name="tipodedocumento">Seleccione tipo de documento</string>
     <string name="numerodedocumento">Ingrese Número De Documento</string>
+    <string name="sistemacontratacion">Información para \ncontratación pública</string>
 
 </resources>

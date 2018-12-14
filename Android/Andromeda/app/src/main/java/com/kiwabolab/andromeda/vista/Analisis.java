@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import com.valdesekamdem.library.mdtoast.MDToast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Analisis extends Activity {
+public class Analisis extends AppCompatActivity {
     //----------------------------------------------------------------------------------------------
     //Variables
     @BindView(R.id.txtNameScore)TextView nombrecore;
@@ -29,11 +30,9 @@ public class Analisis extends Activity {
     @BindView(R.id.dotred)TextView redScore;
     @BindView(R.id.scoreCalificacion)TextView score;
 
-
     private float green=0;
     private float orange=0;
     private float red=0;
-
 
     private Rues rues;
     private Procuraduria procuraduria;
@@ -156,7 +155,6 @@ public class Analisis extends Activity {
             MDToast mdToast = MDToast.makeText(getApplicationContext(), "Atención! No existe registro", MDToast.LENGTH_LONG, MDToast.TYPE_WARNING);
             mdToast.show();
         }
-
     }
     //----------------------------------------------------------------------------------------------
     //

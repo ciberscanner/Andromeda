@@ -1,133 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@mipmap/bg">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
-            <ImageView
-                android:id="@+id/imageView2"
+            <include
+                layout="@layout/headder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@mipmap/title" />
+                android:layout_gravity="center" />
+            <include
+                layout="@layout/search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
             <include
                 layout="@layout/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
             <LinearLayout
+                android:layout_marginTop="1dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/title_blue_bar"
-                android:orientation="horizontal"
-                android:paddingTop="5dp"
-                android:layout_marginTop="10dp"
-                android:clickable="true"
-                android:onClick="GotoRues">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/arrow_white_side"
-                    android:layout_gravity=""
-                    android:layout_marginTop="8dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="RUES"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"/>
-                <ImageView
-                    android:id="@+id/dotRues"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/dot_orange" />
-            </LinearLayout>
+                android:layout_height="1dp"
+                android:background="@color/silver"></LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/title_blue_bar"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:paddingRight="10dp"
+                android:background="@color/cloud"
+                android:paddingLeft="10dp"
+                android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:clickable="true"
-                android:onClick="GotoProcuraduria">
-                <ImageView
-                    android:layout_width="80dp"
+                android:paddingBottom="5dp">
+                <android.support.v7.widget.CardView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/arrow_white_side"
-                    android:layout_gravity=""
-                    android:layout_marginTop="8dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="7dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardElevation="5dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:onClick="GotoRues">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="RUES"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorWhite"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="20sp"/>
+                        <ImageView
+                            android:id="@+id/dotRues"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/dot_orange" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="PROCURADURÍA"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"/>
-                <ImageView
-                    android:id="@+id/dotProcuraduria"
-                    android:layout_width="80dp"
+                    android:layout_marginBottom="7dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardElevation="5dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:onClick="GotoProcuraduria">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="PROCURADURÍA"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorWhite"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="20sp"/>
+                        <ImageView
+                            android:id="@+id/dotProcuraduria"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/dot_orange" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/dot_orange" />
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginBottom="7dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardElevation="5dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="SECOP II"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorWhite"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="20sp"/>
+                        <ImageView
+                            android:id="@+id/dotSecop"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/dot_orange" />
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    app:cardCornerRadius="6dp"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardElevation="5dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:onClick="GotoExternas">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="FUENTES EXTERNAS"
+                            android:layout_gravity="center_vertical"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
             </LinearLayout>
-            <LinearLayout
+            <include
+                layout="@layout/footer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/title_blue_bar"
-                android:orientation="horizontal"
-                android:paddingTop="5dp">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/arrow_white_side"
-                    android:layout_gravity=""
-                    android:layout_marginTop="8dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SECOP"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"/>
-                <ImageView
-                    android:id="@+id/dotSecop"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/dot_orange" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/title_blue_bar"
-                android:orientation="horizontal"
-                android:paddingTop="5dp"
-                android:clickable="true"
-                android:onClick="GotoExternas">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/arrow_white_side"
-                    android:layout_gravity=""
-                    android:layout_marginTop="8dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="FUENTES EXTERNAS"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"/>
-            </LinearLayout>
+                android:layout_gravity="center" />
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+</RelativeLayout>

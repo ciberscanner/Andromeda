@@ -73,6 +73,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
-        android:indeterminateTint="@color/Verde"
+        android:indeterminateTint="@color/colorAccent"
         android:visibility="gone"/>
 </RelativeLayout>

@@ -2,9 +2,11 @@ package com.kiwabolab.andromeda.vista;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -44,7 +46,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @BindView(R.id.spinner)Spinner spinner;
     @BindView(R.id.progressBar)ProgressBar progressBar;
 
-
     private PresentadorHome presentadorHome;
     private String tipodocumento ="0";
 
@@ -58,12 +59,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this ,R.color.colorPrimaryDark));
+        }
         setContentView(R.layout.activity_home);
-
         ButterKnife.bind(this);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -75,15 +75,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         inicializarValores();
     }
     //----------------------------------------------------------------------------------------------
@@ -106,7 +99,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                                 tipodocumento=""+pos;
                                 break;
                         }
-
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
                     }
@@ -180,7 +172,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void obtenerProcuraduriaError() {
         this.okProcuraduria = true;
-
     }
     //----------------------------------------------------------------------------------------------
     //
@@ -213,12 +204,10 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
     //----------------------------------------------------------------------------------------------
@@ -242,7 +231,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } else if (id == R.id.nav_send) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
