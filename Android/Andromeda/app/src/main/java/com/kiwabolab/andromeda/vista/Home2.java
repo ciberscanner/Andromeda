@@ -109,7 +109,12 @@ public class Home2 extends Activity implements ContratoHome.HomeVista{
         else {
             obtenerRues(numero.getText().toString());
             obtenerProcuraduria(numero.getText().toString(),tipodocumento);
-            obtenerProveedoresSecop(numero.getText().toString());
+            if(numero.getText().toString().length()==10){
+                obtenerProveedoresSecop(numero.getText().toString().substring(0,8));
+            }else{
+                obtenerProveedoresSecop(numero.getText().toString());
+            }
+
             new AsyncTaskRunner().execute("1");
         }
     }

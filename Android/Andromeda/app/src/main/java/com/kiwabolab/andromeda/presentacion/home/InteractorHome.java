@@ -85,13 +85,11 @@ public class InteractorHome implements ContratoHome.HomeInteractor {
     //
     @Override
     public void obtenerContratosSecop(String nit) {
-
     }
     //----------------------------------------------------------------------------------------------
     //
     @Override
     public void obtenerProcesosSecop() {
-
     }
     //----------------------------------------------------------------------------------------------
     //

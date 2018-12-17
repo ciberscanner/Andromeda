@@ -19,6 +19,7 @@
         android:src="@mipmap/button_consultar"
         android:layout_gravity="center"
         android:clickable="true"
+        android:onClick="consultarContratacion"
         />
     <LinearLayout
         android:id="@+id/footer"
@@ -28,45 +29,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
             <TextView
                 android:layout_width="135dp"
                 android:layout_height="wrap_content"
-                android:text="Registro en SECOP"
+                android:text="Contratos vigentes"
                 android:textColor="@color/Gristexto"
                 android:textSize="16sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="20dp"/>
             <TextView
-                android:id="@+id/descripcion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Si"
-                android:layout_weight="1"
-                android:textColor="@color/Gristexto"
-                android:textSize="16sp"
-                android:layout_marginBottom="5dp"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:textAlignment="center"
-                android:background="@drawable/edittext_rounded_corners" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="135dp"
-                android:layout_height="wrap_content"
-                android:text="Es Pyme"
-                android:textColor="@color/Gristexto"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginRight="20dp"/>
-            <TextView
-                android:id="@+id/mypime"
+                android:id="@+id/contratosvigentes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -86,14 +61,14 @@
             <TextView
                 android:layout_width="135dp"
                 android:layout_height="wrap_content"
-                android:text="Fecha de creación"
+                android:text="Contratos totales"
                 android:textColor="@color/Gristexto"
                 android:textSize="16sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="20dp"/>
             <TextView
-                android:id="@+id/fecha"
+                android:id="@+id/contratostotales"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -106,6 +81,47 @@
                 android:textAlignment="center"
                 android:background="@drawable/edittext_rounded_corners" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:text="Total Contratado"
+                android:textColor="@color/Gristexto"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="20dp"/>
+            <TextView
+                android:id="@+id/totalcontratado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:layout_weight="1"
+                android:textColor="@color/Gristexto"
+                android:textSize="16sp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textAlignment="center"
+                android:background="@drawable/edittext_rounded_corners" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/silver"></LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:text="Contratos"
+            android:textColor="@color/Gristexto"/>
     </LinearLayout>
 
 </LinearLayout>

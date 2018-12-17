@@ -5,6 +5,15 @@
     android:orientation="horizontal"
     android:padding="15dp"
     android:background="@color/colorPrimary">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/left_arrow"
+        android:clickable="true"
+        android:layout_gravity="center_vertical"
+        android:onClick="mostrarBusqueda"
+        android:padding="5dp"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,7 +21,8 @@
         android:text="Andromeda"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:layout_marginLeft="15dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
