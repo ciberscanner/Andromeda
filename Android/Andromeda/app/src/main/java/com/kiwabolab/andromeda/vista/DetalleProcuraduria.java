@@ -15,9 +15,11 @@ import butterknife.ButterKnife;
 public class DetalleProcuraduria extends Activity {
     //----------------------------------------------------------------------------------------------
     //Variables
-    @BindView(R.id.dotProcuraduria)ImageView dotProcuraduria;
+    @BindView(R.id.dotRues)ImageView dotProcuraduria;
     @BindView(R.id.dotProcuraduria2)ImageView dotProcuraduria2;
     @BindView(R.id.descripcion)TextView descripcion;
+    @BindView(R.id.titledetalle)TextView title;
+
 
     private Procuraduria procuraduria;
     //----------------------------------------------------------------------------------------------
@@ -32,7 +34,7 @@ public class DetalleProcuraduria extends Activity {
 
         //rues = (Rues)getIntent().getSerializableExtra("rues");
         procuraduria = (Procuraduria) getIntent().getSerializableExtra("procuraduria");
-
+        title.setText("PROCURADURÍA");
         setVista();
     }
     //----------------------------------------------------------------------------------------------

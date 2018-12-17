@@ -16,9 +16,15 @@ public class DetalleRues extends Activity {
     //----------------------------------------------------------------------------------------------
     //Variables
     @BindView(R.id.estado)TextView estado;
+    @BindView(R.id.titledetalle)TextView title;
+    @BindView(R.id.txtName)TextView nombre;
+    @BindView(R.id.txtNit)TextView nit;
+
     @BindView(R.id.registro)TextView registro;
     @BindView(R.id.categoria)TextView categoria;
-    @BindView(R.id.sociedad)TextView tipo;
+    @BindView(R.id.tipo)TextView tipo;
+    @BindView(R.id.sociedad)TextView organizacion;
+
     @BindView(R.id.camara)TextView camara;
 
     @BindView(R.id.dotRues)ImageView dotRues;
@@ -35,18 +41,22 @@ public class DetalleRues extends Activity {
         ButterKnife.bind(this);
 
         rues = (Rues)getIntent().getSerializableExtra("rues");
+        title.setText("RUES");
         setVista();
     }
     //----------------------------------------------------------------------------------------------
     //
     private void setVista(){
-        estado.setText(rues.getRows().get(0).getEstado());
-        registro.setText(rues.getRows().get(0).getMatricula());
-        categoria.setText(rues.getRows().get(0).getCategoriaMatricula());
-        tipo.setText(rues.getRows().get(0).getOrganizacionJuridica());
-        camara.setText(rues.getRows().get(0).getNombreCamara());
+        nombre.setText(rues.getRowEmpresas().get(0).getRazonSocial());
+        nit.setText(rues.getRowEmpresas().get(0).getIdentificacion());
+        estado.setText(rues.getRowEmpresas().get(0).getEstado());
+        registro.setText(rues.getRowEmpresas().get(0).getMatricula());
+        categoria.setText(rues.getRowEmpresas().get(0).getCategoriaMatricula());
+        tipo.setText(rues.getRowEmpresas().get(0).getTipo());
+        organizacion.setText(rues.getRowEmpresas().get(0).getOrganizacionJuridica());
+        camara.setText(rues.getRowEmpresas().get(0).getNombreCamara());
 
-        if(rues.getRows().get(0).getEstado().equals("ACTIVA")){
+        if(rues.getRowEmpresas().get(0).getEstado().equals("ACTIVA")){
             dotRues.setImageResource(R.mipmap.dot_green);
             dotRues2.setImageResource(R.mipmap.dot_green);
         }else{

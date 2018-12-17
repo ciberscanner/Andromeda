@@ -12,20 +12,30 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
             <include
-                layout="@layout/headder"
+                layout="@layout/headder2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
-            <include
-                layout="@layout/search"
+            <LinearLayout
+                android:id="@+id/bloquebuscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:orientation="vertical"
+                android:visibility="gone">
+                <include
+                    layout="@layout/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
             <include
                 layout="@layout/score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"/>
             <LinearLayout
                 android:layout_marginTop="1dp"
                 android:layout_width="match_parent"
@@ -36,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingRight="10dp"
-                android:background="@color/cloud"
                 android:paddingLeft="10dp"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
@@ -120,6 +129,8 @@
                         android:layout_height="40dp"
                         android:orientation="horizontal"
                         android:paddingLeft="15dp"
+                        android:clickable="true"
+                        android:onClick="GotoSecopII"
                         android:paddingRight="15dp">
                         <TextView
                             android:layout_width="wrap_content"
@@ -141,33 +152,6 @@
                 <android.support.v7.widget.CardView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:layout_width="match_parent"
-                    android:src="@mipmap/dot_orange" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/title_blue_bar"
-                android:orientation="horizontal"
-                android:paddingTop="5dp"
-                android:clickable="true"
-                android:onClick="GotoSecopII">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/arrow_white_side"
-                    android:layout_gravity=""
-                    android:layout_marginTop="8dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="SECOP II"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"/>
-                <ImageView
-                    android:id="@+id/dotSecop"
-                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     app:cardCornerRadius="6dp"
@@ -194,20 +178,11 @@
                 </android.support.v7.widget.CardView>
             </LinearLayout>
             <include
+                android:visibility="gone"
                 layout="@layout/footer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
         </LinearLayout>
     </ScrollView>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom|end"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 </RelativeLayout>

@@ -2,7 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg">
+    android:background="@mipmap/bg"
+    android:orientation="vertical">
+    <include
+        layout="@layout/headderback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -11,35 +17,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-            <LinearLayout
+            <TextView
+                android:id="@+id/txtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/title_blue_bar"
-                android:orientation="horizontal"
-                android:paddingTop="5dp"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/arrow_white_back"
-                    android:layout_gravity=""
-                    android:clickable="true"
-                    android:onClick="Exit"
-                    android:layout_marginTop="8dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="RUES"
-                    android:textStyle="bold"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="20sp"/>
-                <ImageView
-                    android:id="@+id/dotRues"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/dot_orange" />
-            </LinearLayout>
+                android:textAlignment="center"
+                android:textColor="@color/Gristexto"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="" />
+            <TextView
+                android:id="@+id/txtNit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/Gristexto"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:text=""/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,7 +56,7 @@
                     android:textColor="@color/Gristexto"
                     android:textSize="16sp"
                     android:layout_marginBottom="5dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:paddingRight="5dp"
                     android:background="@drawable/edittext_rounded_corners" />
                 <ImageView
@@ -93,7 +88,7 @@
                     android:textColor="@color/Gristexto"
                     android:textSize="16sp"
                     android:layout_marginBottom="5dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:paddingRight="5dp"
                     android:background="@drawable/edittext_rounded_corners" />
                 <ImageView
@@ -122,7 +117,7 @@
                     android:textColor="@color/Gristexto"
                     android:textSize="16sp"
                     android:layout_marginBottom="5dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:paddingRight="5dp"
                     android:background="@drawable/edittext_rounded_corners" />
                 <ImageView
@@ -133,7 +128,36 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tipo De Sociedad"
+                android:text="Tipo"
+                android:textColor="@color/Gristexto"
+                android:textSize="16sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:layout_weight="1"
+                    android:textColor="@color/Gristexto"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="5dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="5dp"
+                    android:background="@drawable/edittext_rounded_corners" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Organizacion Juridica"
                 android:textColor="@color/Gristexto"
                 android:textSize="16sp"
                 android:layout_marginLeft="10dp"
@@ -151,7 +175,7 @@
                     android:textColor="@color/Gristexto"
                     android:textSize="16sp"
                     android:layout_marginBottom="5dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:paddingRight="5dp"
                     android:background="@drawable/edittext_rounded_corners" />
                 <ImageView
@@ -180,7 +204,7 @@
                     android:textColor="@color/Gristexto"
                     android:textSize="16sp"
                     android:layout_marginBottom="5dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:paddingRight="5dp"
                     android:background="@drawable/edittext_rounded_corners" />
                 <ImageView

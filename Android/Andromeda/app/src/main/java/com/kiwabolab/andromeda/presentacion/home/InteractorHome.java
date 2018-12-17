@@ -55,10 +55,15 @@ public class InteractorHome implements ContratoHome.HomeInteractor {
     //----------------------------------------------------------------------------------------------
     //
     @Override
-    public void obtenerProcuraduria(String nit) {
+    public void obtenerProcuraduria(String nit, int op) {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         RestClient endpointsApi = restApiAdapter.EstablecerConexion(ServidorAndromeda);
-        Call<Procuraduria> contactoResponseCall = endpointsApi.getProcuraduriaNIT(nit);
+        Call<Procuraduria> contactoResponseCall;
+        if(op==0){
+            contactoResponseCall = endpointsApi.getProcuraduriaNIT(nit);
+        }else{
+            contactoResponseCall = endpointsApi.getProcuraduriaCED(nit);
+        }
         contactoResponseCall.enqueue(new Callback<Procuraduria>() {
             @Override
             public void onResponse(Call<Procuraduria> call, Response<Procuraduria> response) {

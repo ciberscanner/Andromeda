@@ -5,31 +5,29 @@
     android:orientation="horizontal"
     android:padding="15dp"
     android:background="@color/colorPrimary">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/left_arrow"
+        android:clickable="true"
+        android:layout_gravity="center_vertical"
+        android:onClick="Exit"
+        android:padding="5dp"
+        />
     <TextView
+        android:id="@+id/titledetalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Andromeda"
+        android:layout_marginLeft="15dp"
+        android:text=""
         android:textColor="@color/colorWhite"
+        android:layout_gravity="center_vertical"
         android:textStyle="bold"
         android:textSize="20sp" />
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/dotRues"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:src="@mipmap/icosearch"
-        android:clickable="true"
-        android:onClick="mostrarAyuda"
-        android:padding="5dp"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/icolupa"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
-        android:onClick="mostrarBusqueda"
-        android:clickable="true"
-        />
-
+        android:src="@mipmap/dot_orange" />
 </LinearLayout>

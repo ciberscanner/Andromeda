@@ -23,7 +23,7 @@ public class Rues implements Serializable
     private Integer records;
     @SerializedName("rows")
     @Expose
-    private List<Row> rows = null;
+    private List<RowEmpresa> rowEmpresas = null;
     private final static long serialVersionUID = -1403178247186374322L;
 
     public Integer getPage() {
@@ -58,12 +58,12 @@ public class Rues implements Serializable
         this.records = records;
     }
 
-    public List<Row> getRows() {
-        return rows;
+    public List<RowEmpresa> getRowEmpresas() {
+        return rowEmpresas;
     }
 
-    public void setRows(List<Row> rows) {
-        this.rows = rows;
+    public void setRowEmpresas(List<RowEmpresa> rowEmpresas) {
+        this.rowEmpresas = rowEmpresas;
     }
 
 }

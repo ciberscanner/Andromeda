@@ -1,12 +1,15 @@
 package com.kiwabolab.andromeda.vista;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kiwabolab.andromeda.R;
@@ -26,6 +29,7 @@ public class Analisis extends AppCompatActivity {
     @BindView(R.id.dotRues)ImageView dotRues;
     @BindView(R.id.dotProcuraduria)ImageView dotProcuraduria;
     @BindView(R.id.dotSecop)ImageView dotSecop;
+    @BindView(R.id.bloquebuscar)LinearLayout busqueda;
 
 
     @BindView(R.id.scorebar)ImageView scorebar;
@@ -62,20 +66,28 @@ public class Analisis extends AppCompatActivity {
     //----------------------------------------------------------------------------------------------
     //
     private void setVista(){
-        if(rues.getCodigoError().equals("0000")){
-            nombrecore.setText(rues.getRows().get(0).getRazonSocial());
-            nitscore.setText(rues.getRows().get(0).getIdentificacion());
+        if(rues!= null){
+            if(rues.getCodigoError().equals("0000")){
+                nombrecore.setText(rues.getRowEmpresas().get(0).getRazonSocial());
+                nitscore.setText(rues.getRowEmpresas().get(0).getIdentificacion());
 
-            if(rues.getRows().get(0).getEstado().equals("ACTIVA")){
-                dotRues.setImageResource(R.mipmap.dot_green);
-                green++;
+                if(rues.getRowEmpresas().get(0).getEstado().equals("ACTIVA")){
+                    dotRues.setImageResource(R.mipmap.dot_green);
+                    green++;
+                }
+            }else{
+                nombrecore.setText("No hay registro en RUES");
+                nombrecore.setTextColor(Color.RED);
+                dotRues.setImageResource(R.mipmap.dot_red);
+                red++;
             }
-        }else{
-            nombrecore.setText("No Hay Registro En RUES");
+        }else {
+            nombrecore.setText("Error Consulta RUES");
             nombrecore.setTextColor(Color.RED);
-            dotRues.setImageResource(R.mipmap.dot_red);
+            dotRues.setImageResource(R.mipmap.dot_gray);
             red++;
         }
+
 
         if(procuraduria == null){
             dotProcuraduria.setImageResource(R.mipmap.dot_orange);
@@ -154,6 +166,41 @@ public class Analisis extends AppCompatActivity {
                 scorebar.setImageResource(R.mipmap.calificacion_valor_13);
                 break;
         }
+    }
+
+    //----------------------------------------------------------------------------------------------
+    //
+    public void mostrarBusqueda(View v){
+        /*if(busqueda.getVisibility()==View.VISIBLE){
+            busqueda.setVisibility(View.GONE);
+        }else{
+            busqueda.setVisibility(View.VISIBLE);
+        }*/
+        finish();
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    public void mostrarAyuda(View v){
+        showDialog(this,"Aceptar");
+    }
+
+    //----------------------------------------------------------------------------------------------
+    //
+    public void showDialog(Activity activity, String msg){
+        final Dialog dialog = new Dialog(activity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.ayuda);
+
+        TextView text = (TextView) dialog.findViewById(R.id.ok);
+        text.setText(msg);
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
     //----------------------------------------------------------------------------------------------
     //

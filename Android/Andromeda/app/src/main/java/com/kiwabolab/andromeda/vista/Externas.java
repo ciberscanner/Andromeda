@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.kiwabolab.andromeda.R;
 import com.kiwabolab.andromeda.modelo.Rues;
@@ -16,6 +18,8 @@ public class Externas extends Activity {
     //----------------------------------------------------------------------------------------------
     //Variables
     @BindView(R.id.webExternas)WebView webView;
+    @BindView(R.id.titledetalle)TextView title;
+    @BindView(R.id.dotRues)ImageView dotExternas;
 
     private Rues rues;
     private String url="https://www.google.com/search?client=firefox-b-ab&dcr=0&biw=1600&bih=538&tbm=nws&ei=s_MUWvuZI6mcjwT577WYBw&q=";
@@ -28,6 +32,8 @@ public class Externas extends Activity {
         ButterKnife.bind(this);
 
         rues = (Rues)getIntent().getSerializableExtra("rues");
+        title.setText("FUENTES EXTERNAS");
+        dotExternas.setVisibility(View.GONE);
 
         setVista();
     }
@@ -36,7 +42,7 @@ public class Externas extends Activity {
     private void setVista(){
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
-        url=url+rues.getRows().get(0).getRazonSocial()+"&oq="+rues.getRows().get(0).getRazonSocial();
+        url=url+rues.getRowEmpresas().get(0).getRazonSocial()+"&oq="+rues.getRowEmpresas().get(0).getRazonSocial();
         webView.loadUrl(url);
     }
 

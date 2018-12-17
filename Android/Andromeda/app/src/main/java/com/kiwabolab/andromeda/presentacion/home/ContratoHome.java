@@ -15,7 +15,7 @@ public interface ContratoHome {
         void obtenerRuesOk(Rues rues);
         void obtenerRuesError();
 
-        void obtenerProcuraduria(String nit);
+        void obtenerProcuraduria(String nit, int op);
         void obtenerProcuraduriaOk(Procuraduria procuraduria);
         void obtenerProcuraduriaError();
 
@@ -37,7 +37,7 @@ public interface ContratoHome {
         void obtenerRuesOk(Rues rues);
         void obtenerRuesError();
 
-        void obtenerProcuraduria(String nit);
+        void obtenerProcuraduria(String nit, int op);
         void obtenerProcuraduriaOk(Procuraduria procuraduria);
         void obtenerProcuraduriaError();
 
@@ -57,7 +57,7 @@ public interface ContratoHome {
     //Interactor
     interface HomeInteractor{
         void obtenerRues(String nit);
-        void obtenerProcuraduria(String nit);
+        void obtenerProcuraduria(String nit, int op);
         void obtenerContratosSecop(String nit);
         void obtenerProcesosSecop();
         void obtenerProveedoresSecop(String nit);

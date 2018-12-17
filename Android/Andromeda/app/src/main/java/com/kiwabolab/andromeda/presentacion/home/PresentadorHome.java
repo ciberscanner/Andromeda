@@ -40,8 +40,8 @@ public class PresentadorHome implements ContratoHome.HomePresentador{
     //----------------------------------------------------------------------------------------------
     //
     @Override
-    public void obtenerProcuraduria(String nit) {
-        interactor.obtenerProcuraduria(nit);
+    public void obtenerProcuraduria(String nit, int op) {
+        interactor.obtenerProcuraduria(nit,op);
     }
     //----------------------------------------------------------------------------------------------
     //
