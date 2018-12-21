@@ -39,7 +39,7 @@ public interface RestClient {
     //----------------------------------------------------------------------------------------------
     //SECOP PROVEEDORES /Información Básica de los proveedores registrados en SECOP II/PORTAL DATOS ABIERTOS
     @GET("cui9-qx99.json")
-    Call<List<ProveedorSecop>> getProveedoresSecop(@Query("NIT") String id);
+    Call<List<ProveedorSecop>> getProveedoresSecop(@Query("$where") String id);
     //----------------------------------------------------------------------------------------------
     //
 }

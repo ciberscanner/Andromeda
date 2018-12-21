@@ -97,7 +97,7 @@ public class InteractorHome implements ContratoHome.HomeInteractor {
     public void obtenerProveedoresSecop(String nit) {
         RestApiAdapter restApiAdapter = new RestApiAdapter();
         RestClient endpointsApi = restApiAdapter.EstablecerConexion(ServidorDatosAbiertos);
-        Call<List<ProveedorSecop>> contactoResponseCall = endpointsApi.getProveedoresSecop("$where=starts_with(NIT,"+nit+")");
+        Call<List<ProveedorSecop>> contactoResponseCall = endpointsApi.getProveedoresSecop("starts_with(NIT,'"+nit+"')");
         contactoResponseCall.enqueue(new Callback<List<ProveedorSecop>>() {
             @Override
             public void onResponse(Call<List<ProveedorSecop>> call, Response<List<ProveedorSecop>> response) {
