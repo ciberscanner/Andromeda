@@ -28,6 +28,7 @@
     <ImageView
         android:id="@+id/dotRues"
         android:layout_width="80dp"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:src="@mipmap/dot_orange" />
 </LinearLayout>

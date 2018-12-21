@@ -18,9 +18,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Andromeda"
+        android:text="Reporte"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
+        android:textAlignment="center"
         android:textSize="20sp"
         android:layout_marginLeft="15dp"/>
     <ImageView
@@ -30,16 +31,6 @@
         android:clickable="true"
         android:onClick="mostrarAyuda"
         android:padding="5dp"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/icolupa"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
-        android:onClick="mostrarBusqueda"
-        android:clickable="true"
         />
 
 </LinearLayout>
