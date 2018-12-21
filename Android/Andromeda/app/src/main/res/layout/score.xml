@@ -26,11 +26,10 @@
         android:layout_width="240dp"
         android:layout_height="90dp"
         android:layout_gravity="center">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/scorebar"
-            android:layout_alignRight="@+id/scorebar"
             android:layout_alignParentTop="true"
             android:layout_marginTop="0dp"
             android:orientation="vertical">
@@ -39,8 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Calificación"
-                android:textSize="14sp"
                 android:textColor="@color/Gristexto"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
