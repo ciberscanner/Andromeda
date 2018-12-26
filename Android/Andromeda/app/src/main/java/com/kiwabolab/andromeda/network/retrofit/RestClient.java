@@ -1,6 +1,7 @@
 package com.kiwabolab.andromeda.network.retrofit;
 
 import com.kiwabolab.andromeda.modelo.Contrato;
+import com.kiwabolab.andromeda.modelo.ProcesoSecop2;
 import com.kiwabolab.andromeda.modelo.Procuraduria;
 import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.modelo.Rues;
@@ -35,7 +36,7 @@ public interface RestClient {
     //----------------------------------------------------------------------------------------------
     //SECOP PROCESOS /Información de los procesos de compra/PORTAL DATOS ABIERTOS
     @GET("s3fx-gnq2.json")
-    Call<List<Contrato>> getSeocpProcesos(@Query("nit_entidad") String id);
+    Call<List<ProcesoSecop2>> getSecop2Procesos(@Query("nit_del_proveedor_adjudicado") String id);
     //----------------------------------------------------------------------------------------------
     //SECOP PROVEEDORES /Información Básica de los proveedores registrados en SECOP II/PORTAL DATOS ABIERTOS
     @GET("cui9-qx99.json")

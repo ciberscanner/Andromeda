@@ -165,7 +165,8 @@ public class Home2 extends Activity implements ContratoHome.HomeVista{
     @Override
     public void obtenerRuesError() {
         this.okRues = true;
-        MDToast mdToast = MDToast.makeText(getApplicationContext(), "Error RUES", MDToast.LENGTH_LONG, MDToast.TYPE_ERROR);
+        rues = new Rues();
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "Sin registro en RUES", MDToast.LENGTH_LONG, MDToast.TYPE_ERROR);
         mdToast.show();
     }
     //----------------------------------------------------------------------------------------------
@@ -220,7 +221,6 @@ public class Home2 extends Activity implements ContratoHome.HomeVista{
     public void obtenerContratosError() {
 
     }
-
     //----------------------------------------------------------------------------------------------
     //
     @Override

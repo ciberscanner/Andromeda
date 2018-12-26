@@ -82,7 +82,7 @@ public class Analisis extends AppCompatActivity {
                 red++;
             }
         }else {
-            nombrecore.setText("Error Consulta RUES");
+            nombrecore.setText("No hay registro en RUES");
             nombrecore.setTextColor(Color.RED);
             dotRues.setImageResource(R.mipmap.dot_gray);
             red++;

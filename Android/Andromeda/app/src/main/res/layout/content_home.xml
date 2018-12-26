@@ -68,7 +68,7 @@
                 android:paddingBottom="5dp"
                 android:paddingRight="5dp"
                 android:paddingLeft="5dp"
-                android:text="Al ingresar un NIT, escribe el dígito de verificación sin espacios ni linea"
+                android:text="Al ingresar un NIT, escribe el dígito de verificación sin espacios ni línea"
                 android:textColor="@color/Gristexto"
                 />
             <EditText

@@ -41,6 +41,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/silver"></LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" Presione en la lista para entrar al detalle"
+                android:textColor="@color/Gristexto"
+                android:textStyle="bold"
+                android:layout_margin="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

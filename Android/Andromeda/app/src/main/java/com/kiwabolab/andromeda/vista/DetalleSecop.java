@@ -1,19 +1,25 @@
 package com.kiwabolab.andromeda.vista;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kiwabolab.andromeda.R;
 import com.kiwabolab.andromeda.modelo.Contrato;
+import com.kiwabolab.andromeda.modelo.ProcesoSecop2;
 import com.kiwabolab.andromeda.modelo.ProveedorSecop;
 import com.kiwabolab.andromeda.presentacion.secop.ContratoSecop;
 import com.kiwabolab.andromeda.presentacion.secop.PresentadorSecop;
+import com.kiwabolab.andromeda.vista.adaptador.ItemContrato;
 import com.valdesekamdem.library.mdtoast.MDToast;
 
 import java.util.List;
@@ -36,10 +42,14 @@ public class DetalleSecop extends Activity implements ContratoSecop.ContratoSeco
     @BindView(R.id.contratostotales)TextView contratostotales;
     @BindView(R.id.contratosvigentes)TextView contratosvigentes;
     @BindView(R.id.totalcontratado)TextView totalcontratado;
+    @BindView(R.id.listacontratos)ListView listacontratos;
+
 
     private PresentadorSecop presentador;
     private ProveedorSecop proveedorSecop;
     private List<Contrato> contratos;
+    private List<ProcesoSecop2>procesos;
+    private ItemContrato adapter;
     //----------------------------------------------------------------------------------------------
     //Constructor
     @Override
@@ -65,7 +75,17 @@ public class DetalleSecop extends Activity implements ContratoSecop.ContratoSeco
         }else{
             fecha.setText(proveedorSecop.getFechaCreacion());
         }
+
+        listacontratos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                obtenerProcesosSecop2(contratos.get(position).getDocproveedor());
+            }
+        });
     }
+    //----------------------------------------------------------------------------------------------
+    //
+
     //----------------------------------------------------------------------------------------------
     //
     public void consultarContratacion(View v){
@@ -120,6 +140,9 @@ public class DetalleSecop extends Activity implements ContratoSecop.ContratoSeco
             total+=(Float.parseFloat(contrato.getValorDelContrato()));
         }
         totalcontratado.setText(addPuntos(total+""));
+
+        adapter= new ItemContrato(getApplicationContext(), contratos);
+        listacontratos.setAdapter(adapter);
     }
     //----------------------------------------------------------------------------------------------
     //
@@ -157,6 +180,44 @@ public class DetalleSecop extends Activity implements ContratoSecop.ContratoSeco
         consultar.setVisibility(View.VISIBLE);
         footer.setVisibility(View.GONE);
         MDToast mdToast = MDToast.makeText(getApplicationContext(), "Error en Contratos SECOP", MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
+        mdToast.show();
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProcesosSecop2(String nit) {
+        presentador.obtenerProcesosSecop2(nit);
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProcesosSecop2Ok(List<ProcesoSecop2> procesos) {
+        this.procesos = procesos;
+        if(procesos.isEmpty()){
+            MDToast mdToast = MDToast.makeText(getApplicationContext(), "No hay Prcesos SECOP", MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
+            mdToast.show();
+        }else{
+            MDToast mdToast = MDToast.makeText(getApplicationContext(), "Procesos SECOP", MDToast.LENGTH_SHORT, MDToast.TYPE_SUCCESS);
+            mdToast.show();
+            procesarSecop();
+        }
+        closeLoading();
+
+        if(!procesos.isEmpty()){
+            Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(procesos.get(0).getUrlproceso()));
+            startActivity(intent);
+        }else{
+            MDToast mdToast = MDToast.makeText(getApplicationContext(), "No se encontro la url del detalle del contrato", MDToast.LENGTH_SHORT, MDToast.TYPE_INFO);
+            mdToast.show();
+        }
+
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProcesosSecop2Error() {
+        MDToast mdToast = MDToast.makeText(getApplicationContext(), "Error en consulta procesos SECOPII", MDToast.LENGTH_SHORT, MDToast.TYPE_ERROR);
         mdToast.show();
     }
 }

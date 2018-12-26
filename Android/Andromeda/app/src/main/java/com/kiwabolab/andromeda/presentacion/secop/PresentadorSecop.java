@@ -1,6 +1,7 @@
 package com.kiwabolab.andromeda.presentacion.secop;
 
 import com.kiwabolab.andromeda.modelo.Contrato;
+import com.kiwabolab.andromeda.modelo.ProcesoSecop2;
 
 import java.util.List;
 
@@ -45,5 +46,23 @@ public class PresentadorSecop implements ContratoSecop.ContratoSecopPresentador{
     @Override
     public void obtenerContratosError() {
         vista.obtenerContratosError();
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProcesosSecop2(String nit) {
+        interactor.obtenerProcesosSecop2(nit);
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProcesosSecop2Ok(List<ProcesoSecop2> procesos) {
+        vista.obtenerProcesosSecop2Ok(procesos);
+    }
+    //----------------------------------------------------------------------------------------------
+    //
+    @Override
+    public void obtenerProcesosSecop2Error() {
+        vista.obtenerProcesosSecop2Error();
     }
 }

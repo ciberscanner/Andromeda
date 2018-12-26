@@ -122,6 +122,13 @@
             android:padding="5dp"
             android:text="Contratos"
             android:textColor="@color/Gristexto"/>
+
     </LinearLayout>
+
+    <ListView
+        android:id="@+id/listacontratos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"/>
 
 </LinearLayout>
